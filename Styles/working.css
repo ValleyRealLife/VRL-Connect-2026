@@ -1,0 +1,16 @@
+/* =========================================
+   RESETS & BASE
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* img { max-width: 100%; } */
+
+/* I had to add page-wrapper to a superfluous div because of all of Rock's extraneous html elements */
+.page-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100dvh;
+}
