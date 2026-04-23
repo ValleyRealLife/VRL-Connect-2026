@@ -1,87 +1,37 @@
-<%@ Master Language="C#" AutoEventWireup="true" Inherits="Rock.Web.UI.RockMasterPage" %>
-<%@ Import Namespace="System.Web.Security" %>
-<%@ Import Namespace="Rock" %>
-<%@ Import Namespace="Rock.Model" %>
-<%@ Import Namespace="Rock.Web.Cache" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Rock.Web.WebForms.RockMasterPage" %>
+<%@ Import Namespace="System.Web.Optimization" %>
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 <head runat="server">
-    <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><asp:Literal ID="lTitle" runat="server" Text="<%$ RockCustomSettings:PageTitle %>" /></title>
 
+    <Rock:RockLiteral ID="lTagManagerHead" runat="server" />
     <asp:ContentPlaceHolder ID="css" runat="server" />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="~~/ConnectVRL/Styles/theme.css" />
-
-    <!-- Google Fonts: Montserrat + Space Grotesk (all weights) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Kit -->
-    <script src="https://kit.fontawesome.com/YOURkitcode.js" crossorigin="anonymous"></script>
-
-    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <Rock:RockLiteral ID="lCss" runat="server" />
 </head>
-
-<body class="<%= MasterPageThemeClass %>">
+<body id="bio-page">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="sManager" runat="server" />
-        <asp:UpdateProgress ID="updateProgress" runat="server" DisplayAfter="800">
-            <ProgressTemplate>
-                <div class="updateprogress-status">
-                    <div class="spinner">
-                        <div class="rect1"></div>
-                        <div class="rect2"></div>
-                        <div class="rect3"></div>
-                        <div class="rect4"></div>
-                        <div class="rect5"></div>
-                    </div>
-                </div>
-            </ProgressTemplate>
-        </asp:UpdateProgress>
-
-        <div id="page-wrapper">
-
-            <!-- Navigation Zone -->
-            <nav id="site-header">
+        <Rock:RockLiteral ID="lTagManagerBody" runat="server" />
+        
+        <div id="wrapper">
+        <h1>Site.Master</h1>
+            <header>
                 <Rock:Zone Name="Header" runat="server" />
-            </nav>
+            </header>
 
-            <!-- Sub Header Zone (optional) -->
-            <div id="sub-header">
-                <Rock:Zone Name="Sub Header" runat="server" />
-            </div>
-
-            <!-- Feature / Hero Zone -->
-            <div id="feature-zone">
-                <Rock:Zone Name="Feature" runat="server" />
-            </div>
-
-            <!-- Main Content -->
-            <main id="content-wrapper">
+            <main>
                 <asp:ContentPlaceHolder ID="main" runat="server" />
             </main>
 
-            <!-- Footer Zone -->
-            <footer id="site-footer">
+            <footer>
                 <Rock:Zone Name="Footer" runat="server" />
             </footer>
-
         </div>
 
-        <%-- Controls that need to be on the page for Rock to work --%>
-        <asp:ContentPlaceHolder ID="modals" runat="server" />
-        <Rock:ModalIFrameDialog ID="modalIframe" runat="server" />
-
+        <Rock:RockLiteral ID="lScripts" runat="server" />
     </form>
-
-    <!-- Scripts -->
-    <asp:ContentPlaceHolder ID="scripts" runat="server" />
-
 </body>
 </html>
