@@ -16,5 +16,6 @@ It was created to replace the Beacons.AI account with something more dynamic, en
 * Develop internal pages: content only and workflow form.
 * Contact us is missing transition flourish.
 * Fold "working.css" into theme.less (if I care).
+* Hover states on the grid.
 * Fix FA icon or switch to manual icons (might be good to have as an override).
 * Look for updates to the core content component block. It will likely be updated to obsidian or undergo other feature updates which will require evaluation.
