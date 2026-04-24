@@ -25,7 +25,7 @@
         </section>
         
 
-        <section>        
+        <%--<section>        
             <Rock:Zone Name="Section A" runat="server" />
         <section>
 
@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <Rock:Zone Name="Section D" runat="server" />
             </div>
-        </div>
+        </div> --%>
 
         <!-- End Content Area -->
 

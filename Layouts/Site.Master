@@ -22,7 +22,7 @@
     <script src="<%# System.Web.Optimization.Scripts.Url("~/Scripts/Bundles/RockJQueryLatest" ) %>"></script>
 
     <!-- Set the viewport width to device width for mobile -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width">
 
     <asp:ContentPlaceHolder ID="css" runat="server" />
 
@@ -48,7 +48,7 @@
         <main>
             <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
         </main>
-	    <footer class="page-footer">
+        <footer>
             <Rock:Zone Name="Footer" runat="server" />
 	    </footer>
     </div>
@@ -90,7 +90,6 @@
                 }
             });
         }
-
     </script>
 
 </body>
