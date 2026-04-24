@@ -1,0 +1,64 @@
+{% assign idArrayish = '0' %}
+{% assign eventCounter = 1 %}
+{% assign eventItemOccurrenceCount = EventItemOccurrences | Size %}
+
+{% if eventItemOccurrenceCount != 0 %}
+
+<section class="events-featured" aria-labelledby="featured-events-heading">
+
+    <div class="section-divider" aria-hidden="true">
+        <h2 id="featured-events-heading">Featured Events</h2>
+    </div>
+
+    <div class="events-listing">
+        {% for eventItemOccurrence in EventItemOccurrences %}
+            {% assign isValid = false %}
+
+            {% for audience in eventItemOccurrence.EventItemOccurrence.EventItem.EventItemAudiences %}
+                {% if audience.DefinedValue.Id == audienceId %}{% assign isValid = true %}{% break %}{% endif %}
+            {% endfor %}
+
+            {% if isValid == true %}
+                {%- if eventCounter > 9 -%}{% break %}{%- endif -%}
+                {% assign daysTillStartDate = 'Now' | DateDiff:eventItemOccurrence.Date,'m' %}
+                {% if daysTillStartDate and daysTillStartDate > -1200 %}
+                    {% capture thisID %}{{ eventItemOccurrence.EventItemOccurrence.EventItem.Id }}{% endcapture %}
+                    {% assign alreadyHere = idArrayish | Split:'-' | Contains:thisID %}
+
+                    {% if alreadyHere %}
+                        <article class="event-item" style="display:none">
+                    {% else %}
+                        <article class="event-item">
+                        {% assign idArrayish = idArrayish | Append:'-' | Append:thisID %}
+                        {% assign eventCounter = eventCounter | Plus:1 %}
+                    {% endif %}
+
+                        <h3>{{ eventItemOccurrence.EventItemOccurrence.EventItem.Name }}</h3>
+                        <div class="event-thumb">
+                            {% if eventItemOccurrence.DetailPage != null %}
+                                <a href="{{ eventItemOccurrence.DetailPage }}" aria-label="View details for {{ eventItemOccurrence.EventItemOccurrence.EventItem.Name }}">
+                            {% else %}
+                                <a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}&date={{ eventItemOccurrence.DateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" aria-label="View details for {{ eventItemOccurrence.EventItemOccurrence.EventItem.Name }}">
+                            {% endif %}
+                                {% if eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid != null %}
+                                    <img src="/GetImage.ashx?guid={{ eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid }}" alt="">
+                                {% else %}
+                                    <img src="/GetImage.ashx?guid=ea573748-2354-4f4a-875d-b8d2dfa30e5d" alt="">
+                                {% endif %}
+                            </a>
+                            <span aria-hidden="true">{{ eventItemOccurrence.Date | Date:'MMM d' }}</span>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% if eventCounter == 1 %}
+            <div class="panel panel-default margin-t-md">
+                <div class="margin-all-md">There are no events in this time frame.</div>
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+{% endif %}
