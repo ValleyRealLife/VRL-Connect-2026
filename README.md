@@ -28,6 +28,9 @@ Moved to production. Tasks to complete in production:
 
 * Add content channel type
 * Create site
+* Attach theme
+* Add blocks to page
+* Finish above tasks
 * Verify content component plugin
 * Remap domain name
     * Q: Can I shuffle 25% of connect.vrl.church traffic via DNS? That'd be cool for testing.
