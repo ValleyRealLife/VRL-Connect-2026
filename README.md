@@ -14,7 +14,7 @@ It was created to replace the Beacons.AI account with something more dynamic, en
 * Add upcoming events slider tied to sub-feature. Can probably steal this from the homepage content component of VRLAgency2.
 * Bootstrap font sizing issue.
 * Develop internal pages: content only and workflow form.
-* Contact us is missing transition flourish.
+* Contact us is missing transition flourish. ✅
 * Fold "working.css" into theme.less (if I care).
 * Hover states on the grid.
 * Fix FA icon or switch to manual icons (might be good to have as an override).

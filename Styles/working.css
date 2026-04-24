@@ -91,10 +91,6 @@ body {
         font-weight: .75rem;
         padding-block-start: .75rem;
     }
-    footer {
-        margin: 0 auto;
-        max-width: 600px;
-    }
 
 /* -- -- -- -- -- -- -- -- --
     Page tag   
@@ -107,7 +103,7 @@ body {
     font-size: 1rem;
     font-weight: 700;
     text-align: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 5;
     background-color: #dddddd88;
@@ -142,11 +138,10 @@ body {
 
 .hero {
     position: relative;
-    padding-block-start: 2rem;
     margin: 0 auto;
     max-width: 600px;
     z-index: 2;
-    padding-block: 4rem;
+    padding-block: 6rem 4rem;
     padding-inline: 2rem;
 
     > p {
@@ -425,9 +420,9 @@ body {
     text-align: center;
     font-size: .8rem;
     max-width: 600px;
-    margin: 0 auto;
     margin-inline: 1rem;
     padding-block-end: 2rem;
+    margin: 0 auto;
 
     > * {
         display: flex;
