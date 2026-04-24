@@ -21,3 +21,13 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 * Hover states on the grid.
 * Fix FA icon or switch to manual icons (might be good to have as an override).
 * Look for updates to the core content component block. It will likely be updated to obsidian or undergo other feature updates which will require evaluation.
+
+---
+
+Moved to production. Tasks to complete in production:
+
+* Add content channel type
+* Create site
+* Verify content component plugin
+* Remap domain name
+    * Q: Can I shuffle 25% of connect.vrl.church traffic via DNS? That'd be cool for testing.
