@@ -13,14 +13,21 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 
 ## Next steps
 
-* Add upcoming events slider tied to sub-feature. Can probably steal this from the homepage content component of VRLAgency2.
-* Bootstrap font sizing issue.
-* Develop internal pages: content only and workflow form.
-* Contact us is missing transition flourish. ✅
-* Fold "working.css" into theme.less (if I care).
+* Fix FA icon (might be good to have as an override)
+    * Size and color
 * Hover states on the grid.
-* Fix FA icon or switch to manual icons (might be good to have as an override).
+* Switch button links to unordered list
+* Contact us button hover states
+* Refine page header. Still not happy with it.
+* Favicon
+* Google Analytics
+* Develop internal pages: content only and workflow form.
+* Bootstrap sizing issue.
+* Create documentation (where)
+* Fold "working.css" into theme.less (if I care).
 * Look for updates to the core content component block. It will likely be updated to obsidian or undergo other feature updates which will require evaluation.
+* Add upcoming events slider tied to sub-feature. Can probably steal this from the homepage content component of VRLAgency2. ✅
+* Contact us is missing transition flourish. ✅
 
 ---
 
@@ -32,8 +39,8 @@ Moved to production. Tasks to complete in production:
 * Add block ✅
 * Attach theme ✅
 * Add blocks to page ✅
-* Finish above tasks
-* Create documentation (where)
+* Finish above tasks 
+
 
 * Remap domain name
     * Q: Can I shuffle 25% of connect.vrl.church traffic via DNS? That'd be cool for testing.
