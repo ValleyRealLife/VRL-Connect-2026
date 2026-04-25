@@ -31,7 +31,7 @@ Moved to production. Tasks to complete in production:
 * Create site ✅
 * Add block ✅
 * Attach theme ✅
-* Add blocks to page 
+* Add blocks to page ✅
 * Finish above tasks
 * Create documentation (where)
 
@@ -40,4 +40,4 @@ Moved to production. Tasks to complete in production:
 * I'm missing something about attribute assignment and content components.
 
 Notes:
-* The featured events slider is using the Calendar Lava block which injects it's own bootstrap container. Since I didn't have a "row" defined it's adding the negative margins that bootstrap counters with positive padding. I had a choice to either add a row around my code which would conpete with my grid layout, or reset the bootstrap container. I chose the latter.
+* Switched approach and nuked the use of the Calendar Lava block which required loading all calendar events (503 currently). Instead just using a lava entity command which is much more efficient.
