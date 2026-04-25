@@ -1,28 +1,59 @@
-{% assign eventItemOccurrenceCount = EventItemOccurrences | Size %}
+//- HomepageFeaturedEvents-html.lava
+
+{% assign audienceId = 150 %}
+{% assign defaultPhotoGuid = 'ea573748-2354-4f4a-875d-b8d2dfa30e5d' %}
+{% assign detailsPagePath = '/page/123' %}
+
+{% sql return:'events' securityenabled:'false'%}
+    SELECT
+        eio.[Id] AS [OccurrenceId],
+        ei.[Name] AS [EventName],
+        eio.[NextStartDateTime],
+        ei.[DetailsUrl],
+        bf.[Guid] AS [PhotoGuid]
+    FROM (
+        /* Grab all future occurrences and number them sequentially per Event */
+        SELECT
+            Id,
+            EventItemId,
+            NextStartDateTime,
+            ROW_NUMBER() OVER (PARTITION BY EventItemId ORDER BY NextStartDateTime ASC) as rn
+        FROM [EventItemOccurrence]
+        WHERE NextStartDateTime >= GETDATE()
+    ) eio
+    INNER JOIN [EventItem] ei ON eio.EventItemId = ei.Id
+    INNER JOIN [EventItemAudience] eia ON ei.Id = eia.EventItemId
+    LEFT JOIN [BinaryFile] bf ON ei.PhotoId = bf.Id
+    WHERE eio.rn = 1 /* Only return the very next occurrence (Row 1) */
+      AND ei.IsActive = 1
+      AND eia.DefinedValueId = {{ audienceId }}
+    ORDER BY eio.NextStartDateTime ASC
+{% endsql %}
+
+{% assign eventCount = events | Size %}
 
 <section class="events-featured" aria-labelledby="featured-events-heading">
     <div class="section-divider" aria-hidden="true">
-        <h2 id="featured-events-heading">Featured Events | {{ eventItemOccurrenceCount }}</h2>
+        <h2 id="featured-events-heading">Featured Events | {{ eventCount }}</h2>
     </div>
 
     <ul class="events-listing">
-
-        {% for eventItemOccurrence in EventItemOccurrences %}
+        {% for event in events %}
             <li class="event-item">
-                {% capture eventName %}{{ eventItemOccurrence.EventItemOccurrence.EventItem.Name }}{% endcapture %}
-                {% capture eventDate %}{{ eventItemOccurrence.EventItemOccurrence.NextStartDateTime | Date:'MMM d' }}{% endcapture %}
+                {% capture eventName %}{{ event.EventName }}{% endcapture %}
+                {% capture eventDate %}{{ event.NextStartDateTime | Date:'MMM d' }}{% endcapture %}
 
-                {% if eventItemOccurrence.DetailPage != null %}
-                    <a href="{{ eventItemOccurrence.DetailPage }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
+                {% if event.DetailsUrl and event.DetailsUrl != '' %}
+                    <a href="{{ event.DetailsUrl }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
                 {% else %}
-                    <a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}&date={{ eventItemOccurrence.DateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
+                    <a href="{{ detailsPagePath }}?EventOccurrenceId={{ event.OccurrenceId }}&date={{ event.NextStartDateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
                 {% endif %}
 
                     <div class="event-thumb">
-                        {% if eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid != null %}
-                            <img src="/GetImage.ashx?guid={{ eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid }}" alt="">
+                        {% if event.PhotoGuid != null %}
+                            <img src="/GetImage.ashx?guid={{ event.PhotoGuid }}" alt="">
                         {% else %}
-                            <img src="/GetImage.ashx?guid=ea573748-2354-4f4a-875d-b8d2dfa30e5d" alt="">
+                            <img src="/GetImage.ashx?guid={{ defaultPhotoGuid }}" alt="">
                         {% endif %}
 
                         <span aria-hidden="true">{{ eventDate }}</span>
@@ -33,6 +64,5 @@
                 </a>
             </li>
         {% endfor %}
-
     </ul>
 </section>

@@ -1,0 +1,43 @@
+//- DEPRECATED TEMPLATE -- HomepageFeaturedEvents
+{% comment %}
+    This template was meant to be used with the Calendar Lava block, but that block returns all events which then need to be filtered. This causes more page load than is necessary
+{% endcomment %}
+
+{% assign eventItemOccurrenceCount = EventItemOccurrences | Size %}
+
+<section class="events-featured" aria-labelledby="featured-events-heading">
+    <div class="section-divider" aria-hidden="true">
+        <h2 id="featured-events-heading">Featured Events | {{ eventItemOccurrenceCount }} | {{ audienceId }}</h2>
+    </div>
+
+    <ul class="events-listing">
+
+        {% for eventItemOccurrence in EventItemOccurrences %}
+            <li class="event-item">
+                {% capture eventName %}{{ eventItemOccurrence.EventItemOccurrence.EventItem.Name }}{% endcapture %}
+                {% capture eventDate %}{{ eventItemOccurrence.EventItemOccurrence.NextStartDateTime | Date:'MMM d' }}{% endcapture %}
+
+                {% if eventItemOccurrence.DetailPage != null %}
+                    <a href="{{ eventItemOccurrence.DetailPage }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
+                {% else %}
+                    <a href="{{ DetailsPage }}?EventOccurrenceId={{ eventItemOccurrence.EventItemOccurrence.Id }}&date={{ eventItemOccurrence.DateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
+                {% endif %}
+
+                    <div class="event-thumb">
+                        {% if eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid != null %}
+                            <img src="/GetImage.ashx?guid={{ eventItemOccurrence.EventItemOccurrence.EventItem.Photo.Guid }}" alt="">
+                        {% else %}
+                            <img src="/GetImage.ashx?guid=ea573748-2354-4f4a-875d-b8d2dfa30e5d" alt="">
+                        {% endif %}
+
+                        <span aria-hidden="true">{{ eventDate }}</span>
+                    </div>
+
+                    <h3 aria-hidden="true">{{ eventName }}</h3>
+
+                </a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</section>
