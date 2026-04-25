@@ -26,11 +26,18 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 
 Moved to production. Tasks to complete in production:
 
-* Add content channel type
-* Create site
-* Attach theme
-* Add blocks to page
+* Add content channel type ✅
+* Verify content component plugin ✅
+* Create site ✅
+* Add block ✅
+* Attach theme ✅
+* Add blocks to page 
 * Finish above tasks
-* Verify content component plugin
+* Create documentation (where)
+
 * Remap domain name
     * Q: Can I shuffle 25% of connect.vrl.church traffic via DNS? That'd be cool for testing.
+* I'm missing something about attribute assignment and content components.
+
+Notes:
+* The featured events slider is using the Calendar Lava block which injects it's own bootstrap container. Since I didn't have a "row" defined it's adding the negative margins that bootstrap counters with positive padding. I had a choice to either add a row around my code which would conpete with my grid layout, or reset the bootstrap container. I chose the latter.
