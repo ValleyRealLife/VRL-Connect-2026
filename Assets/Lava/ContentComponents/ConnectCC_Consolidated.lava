@@ -77,11 +77,11 @@
 </div>
 
 <div class="section-divider" aria-hidden="true"><h2>Next Steps</h2></div>
-<nav aria-label="Your Next Steps" class="btn-abcds">
+<nav aria-label="Your Next Steps" class="btn-grid">
     {{ gridHtml }}
 </nav>
 
+<div class="section-divider" aria-hidden="true"><h2>Other Links</h2></div>
 <nav aria-label="Other Links" class="btn-list">
-    <div class="section-divider" aria-hidden="true"><h2>Other Links</h2></div>
     {{ listHtml }}
 </nav>

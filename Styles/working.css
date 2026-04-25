@@ -62,6 +62,7 @@ body {
     /* Brand colors (all the greens) */
     --clr-brandgreen: #97ca41;
     --clr-highgreen: #b2e75a;
+    --clr-palegreen: oklch(94.23% 0.04805 123.99);
     --clr-subtlegreen: #5d8024;
     --clr-darkgreen: #223600;
 
@@ -92,8 +93,9 @@ body {
     }
     
     h3 {
-        font-size: 1.25rem;
-        font-weight: .75rem;
+        font-size: 1rem;
+        margin-block: .5rem 0;
+        white-space: nowrap;
         /*padding-block-start: .75rem;*/
     }
 
@@ -174,7 +176,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 2rem 1rem 1.5rem;
+    padding: 2.5rem 1rem .75rem;
     position: relative;
     z-index: 2;
     width: 100%;
@@ -189,10 +191,10 @@ body {
     }
     
     &::before { 
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2) 60%);
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4) 60%);
     }
     &::after { 
-        background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.2) 60%);
+        background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.4) 60%);
     }
 
     h2 {
@@ -200,7 +202,7 @@ body {
         font-weight: 600;
         letter-spacing: 0.25em; 
         text-transform: uppercase;
-        color: var(--clr-white);
+        color: #ffffff;
         white-space: nowrap;
         margin: 0;
         padding: 0;
@@ -212,7 +214,7 @@ body {
     Buttons galore
     -- -- -- -- -- -- */
 
-.btn-abcds {
+.btn-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -258,6 +260,12 @@ body {
             font-size: 1.5rem;
             color: var(--clr-highgreen);
         }
+        &:hover, &:active {
+            background: linear-gradient(145deg, rgba(56, 56, 56, 0.75), rgba(42, 42, 42, 0.55));
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        }
     }
     
     img {
@@ -288,15 +296,15 @@ body {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     
-    padding: 1.25rem 1.5rem;
-    gap: 1.2rem;
+    padding: 1rem 1.25rem;
+    gap: 1.3rem;
     color: var(--clr-white);
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     border-radius: var(--button-radius);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
     
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08);
@@ -316,7 +324,7 @@ body {
 
     .btn-icon {
         /* width: 1.8rem; */
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     /* Highlight Button - Static Pronounced Glow & Slight Glass */
@@ -363,7 +371,7 @@ body {
 }
 
 .events-featured {
-    margin-block: 1rem 0rem;
+    margin-block: 1rem;
     padding: 0;
     position: relative;
     z-index: 2;
@@ -372,7 +380,7 @@ body {
 .events-listing {
     list-style: none;
     margin: 0;
-    padding: 1rem 1rem 2rem;
+    padding: 0 1rem;
     display: grid;
     grid-auto-flow: column;
     gap: 1.25rem;
@@ -435,19 +443,20 @@ body {
     span {
         position: absolute;
         top: 10px;
-        left: 10px;
-        padding: .5rem 1rem;
-        background-color: rgb(var(--clr-white-rgb) / 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        right: 10px;
+        padding: .4rem .8rem .3rem;
+        /* background-color: rgb(var(--clr-white-rgb) / 0.85); */
+        background-color: var(--clr-highgreen) / .6;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         color: var(--clr-darkgreen);
         border-radius: 100px;
         z-index: 1;
         text-align: center;
         text-transform: uppercase;
-        font-size: .8rem;
+        font-size: .7rem;
         font-weight: 700;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 }
 
@@ -475,7 +484,7 @@ body {
     font-size: .8rem;
     max-width: 600px;
     margin-inline: 1rem;
-    padding-block-end: 2rem;
+    padding-block: 1rem 4rem;
     margin: 0 auto;
 
     > * {

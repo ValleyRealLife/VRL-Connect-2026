@@ -32,10 +32,10 @@
 
 {% assign eventCount = events | Size %}
 
+<div class="section-divider" aria-hidden="true">
+    <h2 id="featured-events-heading">Featured Events <!--({{ eventCount }})--></h2>
+</div>
 <section class="events-featured" aria-labelledby="featured-events-heading">
-    <div class="section-divider" aria-hidden="true">
-        <h2 id="featured-events-heading">Featured Events <!--({{ eventCount }})--></h2>
-    </div>
 
     <ul class="events-listing">
         {% for event in events %}
