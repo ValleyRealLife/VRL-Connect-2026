@@ -254,6 +254,10 @@ body {
             border-color: rgba(255, 255, 255, 0.03);
             background: linear-gradient(145deg, rgba(34, 34, 34, 0.7), rgba(20, 20, 20, 0.5));
         }
+        .btn-icon {
+            font-size: 1.5rem;
+            color: var(--clr-highgreen);
+        }
     }
     
     img {
@@ -311,7 +315,8 @@ body {
     }
 
     .btn-icon {
-        width: 1.8rem;
+        /* width: 1.8rem; */
+        font-size: 1.5rem;
     }
     
     /* Highlight Button - Static Pronounced Glow & Slight Glass */

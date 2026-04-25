@@ -76,7 +76,8 @@
     {{ highlightHtml }}
 </div>
 
-<nav aria-label="Primary Actions" class="btn-abcds">
+<div class="section-divider" aria-hidden="true"><h2>Next Steps</h2></div>
+<nav aria-label="Your Next Steps" class="btn-abcds">
     {{ gridHtml }}
 </nav>
 

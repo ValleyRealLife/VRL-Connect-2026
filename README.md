@@ -13,7 +13,7 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 
 ## Next steps
 
-* Fix FA icon (might be good to have as an override)
+* Fix FA icon (might be good to have an override)
     * Size and color
 * Hover states on the grid.
 * Switch button links to unordered list
@@ -21,6 +21,7 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 * Refine page header. Still not happy with it.
 * Favicon
 * Google Analytics
+* Publish schedule
 * Develop internal pages: content only and workflow form.
 * Bootstrap sizing issue.
 * Create documentation (where)
