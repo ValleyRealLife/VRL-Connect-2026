@@ -13,11 +13,6 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 
 ## Next steps
 
-* Fix FA icon (might be good to have an override)
-    * Size and color
-* Hover states on the grid.
-* Switch button links to unordered list
-* Contact us button hover states
 * Refine page header. Still not happy with it.
 * Favicon
 * Google Analytics
@@ -29,6 +24,11 @@ _*MOVED TO PRODUCTION 2026-04-24*_
 * Look for updates to the core content component block. It will likely be updated to obsidian or undergo other feature updates which will require evaluation.
 * Add upcoming events slider tied to sub-feature. Can probably steal this from the homepage content component of VRLAgency2. ✅
 * Contact us is missing transition flourish. ✅
+* Contact us button hover states ✅
+* Fix FA icon (might be good to have an override)
+    * Size and color ✅
+* Hover states on the grid. ✅
+* Switch button links to unordered list ✅
 
 ---
 

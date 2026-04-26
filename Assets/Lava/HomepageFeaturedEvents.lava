@@ -2,7 +2,7 @@
 
 {% assign audienceId = 150 %}
 {% assign defaultPhotoGuid = 'ea573748-2354-4f4a-875d-b8d2dfa30e5d' %}
-{% assign detailsPagePath = '/page/123' %}
+{% assign detailsPagePath = 'https://www.vrl.church/get-involved/events/details' %}
 
 {% sql return:'events' securityenabled:'false'%}
     SELECT
@@ -46,12 +46,14 @@
                 {% if event.DetailsUrl and event.DetailsUrl != '' %}
                     <a href="{{ event.DetailsUrl }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
                 {% else %}
-                    <a href="{{ detailsPagePath }}?EventOccurrenceId={{ event.OccurrenceId }}&date={{ event.NextStartDateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
+                    <a href="{{ detailsPagePath }}?EventOccurrenceId={{ event.OccurrenceId }}&date={{ event.NextStartDateTime | Date:'yyyy-MM-ddTHH:mm:ss' }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}" target="_blank">
                 {% endif %}
 
                     <div class="event-thumb">
                         {% if event.PhotoGuid != null %}
-                            <img src="/GetImage.ashx?guid={{ event.PhotoGuid }}" alt="">
+                            //- Original image size should be 1260px x 540px. We'll scale down as needed.
+                            //- <img src="/GetImage.ashx?guid={{ event.PhotoGuid }}" alt="">
+                            <img src="/GetImage.ashx?guid={{ event.PhotoGuid }}&w=630&h=270&mode=crop" alt="">
                         {% else %}
                             <img src="/GetImage.ashx?guid={{ defaultPhotoGuid }}" alt="">
                         {% endif %}
