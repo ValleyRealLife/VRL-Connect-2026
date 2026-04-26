@@ -54,8 +54,8 @@
                     <li>
                         <a class="abcd-btn" href="{{ href }}" data-vt>
                             <i class="{{ icon }} btn-icon" aria-hidden="true"></i>
-                            {% comment %} <span class="btn-label">{{ item.Title }}</span> {% endcomment %}
-                            <span class="btn-label">{{ item.Id }}</span>
+                            <span class="btn-label">{{ item.Title }} ({{ item.Id }})</span>
+                            {% comment %} <span class="btn-label">{{ item.Id }}</span> {% endcomment %}
                         </a>
                     </li>
                 {% endcapture %}

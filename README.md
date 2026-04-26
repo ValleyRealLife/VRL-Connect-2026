@@ -49,3 +49,6 @@ Moved to production. Tasks to complete in production:
 
 Notes:
 * Switched approach and nuked the use of the Calendar Lava block which required loading all calendar events (503 currently). Instead just using a lava entity command which is much more efficient.
+
+---
+I've learned that I can pass both a workflowtype id and other page parms and the workflow type id block won't care. I'll have to use a dynamic stylesheet to hide the block if there's no workflowtypeid attrib.

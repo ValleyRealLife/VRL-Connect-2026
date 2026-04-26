@@ -1,0 +1,18 @@
+{% assign itemId = PageParameter.Item %}
+
+{% if itemId != blank %}
+    {% contentchannelitem id:'{{ itemId }}' %}
+        {% if contentchannelitem != empty %}
+            <article>
+                {{ contentchannelitem.Content }}
+            </article>
+        {% else %}
+            <div>
+                <p>Content could not be loaded.</p>
+            </div>
+        {% endif %}
+    {% endcontentchannelitem %}
+{% else %}
+    <p>I still haven't found what you're looking for.</p>
+    <p>Maybe try our website: <a href="https://www.vrl.church">www.vrl.church</a>.</p>
+{% endif %}
