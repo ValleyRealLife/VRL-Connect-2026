@@ -1,3 +1,23 @@
+{% assign isAdmin = CurrentPerson | IsInGroup:'2' %}
+
+{% if isAdmin %}
+    <h1>You're and Admin, Harry!</h1>
+    {% for item in Items %}
+
+        {% assign active = item | Attribute:'Active' %}
+<pre>
+{{ item.Title }} | {{ item.Id }}
+{{ item.StartDate }} | {{ item.ExpireDate }}
+{{ active }}
+{{ item | Attribute:'FontAwesomeClass' }}
+</pre>
+
+
+    {% endfor %}
+
+//---------------
+{% else %}
+
 {% assign highlightCount = 0 %}
 {% assign gridCount = 0 %}
 
@@ -100,4 +120,5 @@
         {{ listHtml }}
     </ul>
 </nav>
+{% endif %}
 {% endif %}
