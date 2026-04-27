@@ -21,7 +21,7 @@
         {% elsif wfId != '' %}
             {% assign href = '/WorkflowEntry/' | Append:wfId %}
         {% else %}
-            {% assign href = item.DetailPage %}
+            {% assign href = '/page/41889' %}
         {% endif %}
 
         {% comment %} --- HIGHLIGHT SECTION --- {% endcomment %}
@@ -52,7 +52,7 @@
                 {% capture gridHtml %}
                     {{ gridHtml }}
                     <li>
-                        <a class="abcd-btn" href="{{ href }}" data-vt>
+                        <a class="abcd-btn" href="/page/41889{{ href }}?WorkflowTypeId={{ wfId }}" data-vt>
                             <i class="{{ icon }} btn-icon" aria-hidden="true"></i>
                             <span class="btn-label">{{ item.Title }} ({{ item.Id }})</span>
                             {% comment %} <span class="btn-label">{{ item.Id }}</span> {% endcomment %}
