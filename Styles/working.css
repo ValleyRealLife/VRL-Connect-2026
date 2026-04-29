@@ -523,8 +523,25 @@ body {
 /* -- -- -- -- -- --
    Internal Page Styles
    -- -- -- -- -- -- */
+.hero {
+    padding-inline: 2rem;
+
+    i {
+        display: block;
+        font-size: 4rem;
+        text-align: center;
+        margin-block-end: 2rem;
+    }
+}
+.connect-body {
+    max-width: 600px;
+    margin: 0 auto;
+}
+/* -- -- Resetting Rock's forms styling -- -- */
 
 
+
+/* -- -- End of styling for Rock's forms - it's a lot -- -- */
 
 
 

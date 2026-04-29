@@ -1,24 +1,22 @@
+<div class="page-tag">
+    <a href="https://www.vrl.church" target="_blank" rel="noopener noreferrer" class="tag-link">www.vrl.church</a>
+</div>
+
+
 {% assign itemId = PageParameter.Item %}
 
 {% if itemId != empty %}
     {% contentchannelitem id:'{{ itemId }}'%}
+    <div class="hero">
         <i class="{{ contentchannelitem | Attribute:'FontAwesomeClass' }}"></i>
         <h1>{{ contentchannelitem.Title }}</h1>
+    </div>
 
-        //- {{ contentchannelitem.Content }}
-        //- {{ contentchannelitem | Attribute:'WorkflowTypeId' }}
-        //- {{ contentchannelitem | Attribute:'ExternalLink' }}
-        //- {{ contentchannelitem | Attribute:'Active' }}
-        //- {{ contentchannelitem | Attribute:'ButtonSection' }}
-
-{% endcontentchannelitem %}
+    {% endcontentchannelitem %}
 
 {% else %}
     No way José
 {% endif %}
-
-
-
 
 
 
