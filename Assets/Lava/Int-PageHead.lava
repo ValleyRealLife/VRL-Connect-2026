@@ -1,15 +1,17 @@
-{% assign itemId = PageParameter.Item | Trim %}
+{% assign itemId = PageParameter.Item %}
 
 {% if itemId != empty %}
     {% contentchannelitem id:'{{ itemId }}'%}
         <i class="{{ contentchannelitem | Attribute:'FontAwesomeClass' }}"></i>
         <h1>{{ contentchannelitem.Title }}</h1>
-        {{ contentchannelitem.Content }}
-        {{ contentchannelitem | Attribute:'WorkflowTypeId' }}
-        {{ contentchannelitem | Attribute:'ExternalLink' }}
-        {{ contentchannelitem | Attribute:'Active' }}
-        {{ contentchannelitem | Attribute:'ButtonSection' }}
-    {% endcontentchannelitem %}
+
+        //- {{ contentchannelitem.Content }}
+        //- {{ contentchannelitem | Attribute:'WorkflowTypeId' }}
+        //- {{ contentchannelitem | Attribute:'ExternalLink' }}
+        //- {{ contentchannelitem | Attribute:'Active' }}
+        //- {{ contentchannelitem | Attribute:'ButtonSection' }}
+
+{% endcontentchannelitem %}
 
 {% else %}
     No way José
