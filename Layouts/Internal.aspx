@@ -7,7 +7,7 @@
             <span class="ajax-error-message"></span>
         </div>
 
-        <section class="app-main-view">
+        <section class="page-main">
             <Rock:Zone Name="Main" runat="server" />
         </section>
 

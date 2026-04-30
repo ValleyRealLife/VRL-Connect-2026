@@ -154,21 +154,23 @@ body {
     z-index: 2;
     padding-block: 6rem 4rem;
     padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    > p {
-        text-align: center;
-        padding-inline-start: 2ch;
-        font-size: 1rem;
-        font-weight: 300;
-        color: var(--clr-highgreen);
-        text-shadow: 0 0 10px rgba(178 231 90 0.3);
-    }
-
+    
     h1 {
-        margin: 0 auto;
+        display: inline;
         font-size: 2.4rem;
         text-shadow: 0 4px 12px rgba (0 0 0 0.5);
-        text-align: center;
+
+        span {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--clr-highgreen);
+            text-shadow: 0 0 10px rgba(178 231 90 0.3);
+
+        }
     }
 }
 
@@ -536,26 +538,553 @@ body {
 .connect-body {
     max-width: 600px;
     margin: 0 auto;
+    font-size: 1.2rem;
 }
-/* -- -- Resetting Rock's forms styling -- -- */
-/*.connect-workflow-form {
-    position: relative;
-    z-index: 2;
+.connect-body {
+    padding-inline: 1rem;
+    .btn-primary,
+    a.btn-primary,
+    button.btn-primary,
+    input[type="submit"] {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        margin-block: 2rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--clr-darkgreen);
+        background: rgba(151, 202, 65, 0.85);
+        border: 1px solid var(--clr-highgreen);
+        border-radius: var(--button-radius);
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow:
+            0 0 25px rgba(178, 231, 90, 0.7),
+            inset 0 2px 4px rgba(255, 255, 255, 0.4);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-    div.panel-heading {
-        display: none !important;
+        &:visited { color: var(--clr-darkgreen); }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--clr-darkgreen);
+            background: rgba(178, 231, 90, 0.95);
+            box-shadow:
+                0 0 35px rgba(178, 231, 90, 0.9),
+                inset 0 2px 6px rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px) scale(1.02);
+            text-decoration: none;
+            outline: none;
+        }
+
+        i {
+            margin-inline-end: 0.5ch;
+        }
     }
+}
+
+/* -- -- Resetting Rock's forms styling -- -- */
+
+/* -- -- -- -- -- -- -- -- --
+   Workflow Forms (Rock overrides)
+   -- -- -- -- -- -- -- -- -- */
+.connect-workflow-form {
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    /* -- Hide / neutralize Rock chrome -- */
+    div.panel-heading { display: none !important; } /* don't need the heading */
+
     div.panel {
         background-color: unset;
-        border: none;
-        box-shadow: none;
+        border: none !important;
+    }
+    div.panel-body { padding: 0; }
+    div.skeleton.skeleton-block {
+        background-color: unset;
+    }
+    /* -- Footer / consent paragraphs -- */
+    p {
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.55;
+        color: rgb(var(--clr-white-rgb) / 0.65);
+        margin-block: 1.25rem 0;
+    }
+    .form-group {
+        margin-block-end: 2.2rem;
+    }
+    /* -- Labels -- */
+    .control-label {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--clr-white);
+        margin-block-end: 0.55rem;
     }
 
+    /* Required asterisk via Rock's .required class on .form-group */
+    .form-group.required > .control-label::after,
+    .form-group.required label.control-label::after {
+        content: '*';
+        color: var(--clr-highgreen);
+        margin-inline-start: 0.4ch;
+        font-weight: 500;
+        font-size: 1.1rem;
+        /* text-shadow: 0 0 8px rgba(178, 231, 90, 0.5); */
+    }
 
-}*/
+    /* -- Text-like inputs, textareas, selects -- */
+    .form-control,
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="date"],
+    textarea,
+    select {
+        width: 100%;
+        height: 3rem;
+        padding: 0.9rem 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--clr-white);
+        background: linear-gradient(145deg, rgba(95, 95, 95, 0.55), rgba(70, 70, 70, 0.4));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--button-radius);
+        box-shadow:
+            inset 0 1px 1px rgba(0, 0, 0, 0.2),
+            0 4px 12px rgba(0, 0, 0, 0.25);
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.25s ease;
+        appearance: none;
+        -webkit-appearance: none;
 
+        &::placeholder {
+            color: rgb(var(--clr-white-rgb) / 0.45);
+        }
 
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.22);
+        }
 
+        &:focus,
+        &:focus-visible {
+            outline: none;
+            border-color: var(--clr-brandgreen);
+            background: linear-gradient(145deg, rgba(110, 110, 110, 0.6), rgba(85, 85, 85, 0.45));
+            box-shadow:
+                0 0 0 3px rgba(151, 202, 65, 0.22),
+                inset 0 1px 1px rgba(0, 0, 0, 0.2),
+                0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        &:disabled,
+        &[readonly] {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+    }
+
+    textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    /* Native select: layered chevron over the gradient */
+    select {
+        background-image:
+            url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cbcbcb'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E"),
+            linear-gradient(145deg, rgba(95, 95, 95, 0.55), rgba(70, 70, 70, 0.4));
+        background-repeat: no-repeat, no-repeat;
+        background-position: right 0.85rem center, 0 0;
+        background-size: 1.1rem, 100% 100%;
+        padding-inline-end: 2.75rem;
+        cursor: pointer;
+
+        &:focus,
+        &:focus-visible {
+            background-image:
+                url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b2e75a'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E"),
+                linear-gradient(145deg, rgba(110, 110, 110, 0.6), rgba(85, 85, 85, 0.45));
+        }
+    }
+
+    /* Autofill safety — Chrome paints a yellow background otherwise */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill {
+        -webkit-text-fill-color: var(--clr-white);
+        -webkit-box-shadow: 0 0 0 1000px rgba(70, 70, 70, 0.95) inset;
+        caret-color: var(--clr-white);
+    }
+
+    /* -- Phone field (country-code chip + number) and addon icons (envelope, phone, etc.) -- */
+    .input-group {
+        display: flex;
+        align-items: stretch;
+        gap: 0.5rem;
+        width: 100%;
+
+        > .form-control {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .input-group-btn,
+        .input-group-addon {
+            display: inline-flex;
+        }
+
+        /* Icon prefix chip (e.g. fa-envelope, fa-phone) — matches input visually */
+        .input-group-addon {
+            align-items: center;
+            justify-content: center;
+            min-width: 3rem;
+            padding: 0 1rem;
+            color: var(--clr-white);
+            font-size: 1.5rem;
+            background: linear-gradient(145deg, rgba(95, 95, 95, 0.55), rgba(70, 70, 70, 0.4));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px 0 0 12px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+
+            i, .fa {
+                line-height: 1;
+            }
+        }
+
+        .btn,
+        button {
+            padding: 0.9rem 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.0625rem;
+            color: var(--clr-white);
+            background: linear-gradient(145deg, rgba(95, 95, 95, 0.55), rgba(70, 70, 70, 0.4));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--button-radius);
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.22);
+                background: linear-gradient(145deg, rgba(110, 110, 110, 0.6), rgba(85, 85, 85, 0.45));
+            }
+        }
+    }
+
+    /* -- Custom Checkboxes & Radios -- */ /* THIS DOESN"T WORK -------- */
+    .checkbox,
+    .radio,
+    .checkbox-inline,
+    .radio-inline {
+        margin: 0;
+        padding: 0;
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 0.95rem;
+            cursor: pointer;
+            color: var(--clr-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.4;
+            text-transform: none;
+            letter-spacing: normal;
+            padding-block: 0.6rem;
+            margin: 0;
+            transition: color 0.15s ease;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    /* Stacked options (the common case): full-row hit area, hairline separators */
+    .controls.rockcheckboxlist {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        gap:1rem;
+        max-width: 600px;
+    }
+    .controls > .checkbox,
+    .controls > .radio {
+        display: block;
+
+        label {
+            display: flex;
+            width: 100%;
+            padding-block: 0.65rem;
+
+        }
+        
+        & + .checkbox,
+        & + .radio {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+    }
+    
+    .checkbox-inline,
+    .radio-inline {
+        display: inline-flex;
+        margin-inline-end: 1.5rem;
+        span { 
+            margin-inline-start: .8rem;
+            font-size: 1rem; 
+        }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        flex-shrink: 0;
+        width: 1.35rem;
+        height: 1.35rem;
+        margin: 0;
+        background: linear-gradient(145deg, rgba(85, 85, 85, 0.6), rgba(60, 60, 60, 0.45));
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        cursor: pointer;
+        position: relative;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        &:focus-visible {
+            outline: none;
+            box-shadow:
+                0 0 0 3px rgba(151, 202, 65, 0.3),
+                inset 0 1px 1px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    input[type="checkbox"] {
+        border-radius: 5px;
+
+        &:checked {
+            background: var(--clr-brandgreen);
+            border-color: var(--clr-highgreen);
+            box-shadow:
+                0 0 14px rgba(178, 231, 90, 0.5),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 6px;
+                height: 11px;
+                border: solid var(--clr-darkgreen);
+                border-width: 0 2.5px 2.5px 0;
+                transform: translate(-55%, -65%) rotate(45deg);
+            }
+        }
+    }
+
+    input[type="radio"] {
+        border-radius: 50%;
+
+        &:checked {
+            border-color: var(--clr-highgreen);
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                margin: auto;
+                width: 0.7rem;
+                height: 0.7rem;
+                background: var(--clr-brandgreen);
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(178, 231, 90, 0.7);
+            }
+        }
+    }
+
+    /* -- Help text / character countdown / descriptions -- */
+    .help-block,
+    .text-muted,
+    .countdown-timer,
+    small {
+        display: block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: rgb(var(--clr-white-rgb) / 0.5);
+        margin-block-start: 0.4rem;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+
+    /* -- Validation states -- */
+    .has-error {
+        .form-control,
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            border-color: #e07b6e;
+            box-shadow:
+                0 0 0 3px rgba(224, 123, 110, 0.2),
+                inset 0 1px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .control-label,
+        .help-block,
+        .validation-error {
+            color: #ffb3a7;
+        }
+    }
+
+    .validation-summary-errors {
+        background: rgba(224, 123, 110, 0.12);
+        border: 1px solid rgba(224, 123, 110, 0.4);
+        border-radius: var(--button-radius);
+        padding: 0.85rem 1rem;
+        color: #ffb3a7;
+        font-size: 0.9rem;
+        margin-block-end: 1rem;
+
+        ul {
+            margin: 0;
+            padding-inline-start: 1.25rem;
+        }
+    }
+
+    /* -- Action area & Submit button (matches .menu-btn.highlight) -- */
+    .actions,
+    .form-actions {
+        margin-block-start: 1.75rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+    }
+
+    .btn-primary,
+    a.btn-primary,
+    button.btn-primary,
+    input[type="submit"] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 200px;
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--clr-darkgreen);
+        background: rgba(151, 202, 65, 0.85);
+        border: 1px solid var(--clr-highgreen);
+        border-radius: var(--button-radius);
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow:
+            0 0 25px rgba(178, 231, 90, 0.7),
+            inset 0 2px 4px rgba(255, 255, 255, 0.4);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &:visited { color: var(--clr-darkgreen); }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--clr-darkgreen);
+            background: rgba(178, 231, 90, 0.95);
+            box-shadow:
+                0 0 35px rgba(178, 231, 90, 0.9),
+                inset 0 2px 6px rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px) scale(1.02);
+            text-decoration: none;
+            outline: none;
+        }
+
+        i {
+            margin-inline-end: 0.5ch;
+        }
+    }
+
+    /* Secondary/cancel buttons (e.g. multi-step "Previous") */
+    .btn-default,
+    .btn-link,
+    a.btn-default,
+    button.btn-default {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.75rem;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--clr-white);
+        background: linear-gradient(145deg, rgba(47, 47, 47, 0.65), rgba(34, 34, 34, 0.45));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--button-radius);
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &:visited { color: var(--clr-white); }
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: linear-gradient(145deg, rgba(56, 56, 56, 0.75), rgba(42, 42, 42, 0.55));
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+            outline: none;
+        }
+    }
+}
 /* -- -- End of styling for Rock's forms - it's a lot -- -- */
 
 
