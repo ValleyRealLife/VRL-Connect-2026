@@ -538,6 +538,21 @@ body {
     margin: 0 auto;
 }
 /* -- -- Resetting Rock's forms styling -- -- */
+/*.connect-workflow-form {
+    position: relative;
+    z-index: 2;
+
+    div.panel-heading {
+        display: none !important;
+    }
+    div.panel {
+        background-color: unset;
+        border: none;
+        box-shadow: none;
+    }
+
+
+}*/
 
 
 

@@ -7,7 +7,7 @@
 
             //- This is the body of the content
             <section class="connect-body">
-                {{ contentchannelitem.Content }}
+                {{ contentchannelitem.Content | RunLava }}
             </section>
 
         //- What happens if there's no content channel item
@@ -22,4 +22,16 @@
 {% else %}
     <p>I still haven't found what you're looking for.</p>
     <p>Maybe try our website: <a href="https://www.vrl.church">www.vrl.church</a>.</p>
+{% endif %}
+
+{% assign hasWorkflow = PageParameter.workflowtypeid %}
+{% if hasWorkflow != blank %}
+    <!-- this item has a workflow -->
+    {% else %}
+    <!-- this item does not have a workflow -->
+    {% stylesheet %}
+        .connect-workflow-form {
+            display: none;
+            }
+    {% endstylesheet %}
 {% endif %}
