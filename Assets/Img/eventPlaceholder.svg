@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- ~145deg gradient matching your CSS (with alpha baked in) -->
+    <linearGradient id="glass" x1="0%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%"   stop-color="#2f2f2f" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#222222" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <!-- Subtle white grain to suggest the frosted texture -->
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="4"/>
+      <feColorMatrix values="0 0 0 0 1
+                             0 0 0 0 1
+                             0 0 0 0 1
+                             0.5 0.5 0.5 0 0"/>
+    </filter>
+
+    <!-- Heavy blur for the "stuff behind the glass" -->
+    <filter id="bokeh" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="45"/>
+    </filter>
+  </defs>
+
+  <!-- Dark base (stand-in for the page behind the real glass) -->
+  <rect width="700" height="300" fill="#141414"/>
+
+  <!-- Out-of-focus blobs read as "content blurred behind frosted glass" -->
+  <g filter="url(#bokeh)" opacity="0.4">
+    <circle cx="120" cy="70"  r="110" fill="#6a6a6a"/>
+    <circle cx="580" cy="230" r="130" fill="#404040"/>
+    <circle cx="370" cy="160" r="85"  fill="#7a7a7a"/>
+  </g>
+
+  <!-- The glass plane itself -->
+  <rect width="700" height="300" fill="url(#glass)"/>
+
+  <!-- Fine grain for that frosted feel -->
+  <rect width="700" height="300" filter="url(#grain)" opacity="0.12"/>
+
+  <!-- Top edge highlight — glass catching a touch of light -->
+  <rect width="700" height="1.5" fill="#ffffff" opacity="0.08"/>
+
+  <!-- Faint inner border for card depth -->
+  <rect x="0.5" y="0.5" width="699" height="299" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+</svg>

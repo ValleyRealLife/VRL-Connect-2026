@@ -39,10 +39,10 @@
 
     <ul class="events-listing">
         {% for event in events %}
-            <li class="event-item">
-                {% capture eventName %}{{ event.EventName }}{% endcapture %}
-                {% capture eventDate %}{{ event.NextStartDateTime | Date:'MMM d' }}{% endcapture %}
+            {% capture eventName %}{{ event.EventName }}{% endcapture %}
+            {% capture eventDate %}{{ event.NextStartDateTime | Date:'MMM d' }}{% endcapture %}
 
+            <li class="event-item">
                 {% if event.DetailsUrl and event.DetailsUrl != '' %}
                     <a href="{{ event.DetailsUrl }}" class="event-card-link" aria-label="{{ eventName }}, {{ eventDate }}">
                 {% else %}
@@ -66,5 +66,17 @@
                 </a>
             </li>
         {% endfor %}
+        <li class="event-item">
+
+            <a href="https://www.vrl.church/get-involved/events" class="event-card-link" aria-label="View All Events">
+                <div class="event-thumb empty-thumb">
+                    <img src="~~/Assets/Img/eventPlaceholder.svg" alt="">
+                    <span aria-hidden="true">There's always more ...</span>
+                </div>
+
+                <h3 aria-hidden="true">View All Events</h3>
+
+            </a>
+        </li>
     </ul>
 </section>
